@@ -26,9 +26,10 @@ install() {
     fi
 
     wget https://raw.githubusercontent.com/arthursn/fetch-dlls/master/fetch-dlls.sh -O "$target"
-    chmod +x "$target"
 
-    echo "Installation finished!"
+    [ $? -eq 0 ] && chmod +x "$target"
+
+    [ $? -eq 0 ] && echo "Installation successful!" || echo "Installation failed!"
 }
 
 install "$INSTALL_DIR"
