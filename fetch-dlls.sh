@@ -3,6 +3,8 @@
 # Script for copying MinGW DLLs based on the following blog post:
 # https://blog.rubenwardy.com/2018/05/07/mingw-copy-dlls/
 
+[ $# -ne 1 ] && echo "Usage: fetch-dlls [path/to/binary/file]" && exit 1
+
 [ -z ${SEARCH_PATHS+x} ] && SEARCH_PATHS="$MINGW_PREFIX/bin"
 
 function find_and_copy_dlls() {
