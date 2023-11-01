@@ -51,8 +51,8 @@ By default, the DLLs will only be searched in the `$MINGW_PACKAGE_PREFIX/bin` di
 If you'd like to add custom search paths, simply set the `SEARCH_PATHS` variable accordingly. For example:
 
 ```sh
-# Multiple paths should be colon (:) separated
-SEARCH_PATHS="$HOME/Miniconda3:/ucrt64/bin" fetch-dlls binary_file.exe
+# Multiple paths should be semicolon (;) separated
+SEARCH_PATHS="$HOME/Miniconda3;/ucrt64/bin" fetch-dlls binary_file.exe
 ```
 
 Some DLLs will not be found, as they are Windows native.
