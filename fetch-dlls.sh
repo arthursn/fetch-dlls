@@ -8,7 +8,7 @@
 [ -z ${SEARCH_PATHS+x} ] && SEARCH_PATHS="$MINGW_PREFIX/bin"
 
 function find_and_copy_dlls() {
-    IFS=";"
+    IFS=';'
     for d in $SEARCH_PATHS; do
         file="$d/$1"
         if [ -f $file ]; then
