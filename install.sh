@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 [ -z ${INSTALL_DIR+x} ] && INSTALL_DIR="$HOME/.local/bin"
 
@@ -25,11 +25,18 @@ install() {
         done
     fi
 
-    wget https://raw.githubusercontent.com/arthursn/fetch-dlls/master/fetch-dlls.sh -O "$target"
+    if command -v curl >/dev/null 2>&1; then
+        curl https://raw.githubusercontent.com/arthursn/fetch-dlls/master/fetch-dlls.sh >"$target"
+    elif command -v wget >/dev/null 2>&1; then
+        wget https://raw.githubusercontent.com/arthursn/fetch-dlls/master/fetch-dlls.sh -O "$target"
+    else
+        echo "ERROR: curl or wget are necessary for running this script"
+        exit 1
+    fi
 
     [ $? -eq 0 ] && chmod +x "$target"
 
-    [ $? -eq 0 ] && echo "Installation successful!" || echo "Installation failed!"
+    [ $? -eq 0 ] && echo "Installation successful!" || echo "ERROR: Installation failed!"
 }
 
 install "$INSTALL_DIR"
