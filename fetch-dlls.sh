@@ -12,24 +12,31 @@ function find_and_copy_dlls() {
     for d in $SEARCH_PATHS; do
         local file="$d/$1"
 
+        # If file already checked before
         [[ ${checked[@]} =~ "$file" ]] && continue
         checked+=("$file")
 
-        if [ -f $file ]; then
-            if [[ ${found[@]} =~ "$1" ]]; then
-                echo "$1 also found in $d (overwriting previous copy)"
-            else
-                echo "$1 found in $d"
-                found+=($1)
-            fi
+        # If file not found
+        [[ ! -f $file ]] && continue
 
-            cp $file $dest_dir
-            copy_dlls_for_obj $file
-
-            return
+        # If file found...
+        if [[ ${found[@]} =~ "$1" ]]; then
+            # ... but already found before
+            echo "$1 also found in $d (overwriting previous copy)"
+        else
+            # ... but not found before
+            echo "$1 found in $d"
+            found+=($1)
         fi
+
+        # Copy file
+        cp $file $dest_dir
+
+        # Run DLL search recursively
+        copy_dlls_for_obj $file
     done
 
+    # If file not found, append it to not_found
     [[ ${found[@]} =~ "$1" ]] || not_found+=("$1")
 }
 
@@ -45,6 +52,7 @@ for file in $@; do
     echo "Fetching DLLs for '$file'"
 
     dest_dir=$(dirname $file)
+
     checked=()
     found=()
     not_found=()
