@@ -16,13 +16,14 @@ function find_and_copy_dlls() {
         checked+=("$file")
 
         if [ -f $file ]; then
-            cp $file $dest_dir
             if [[ ${found[@]} =~ "$1" ]]; then
                 echo "$1 also found in $d (overwriting previous copy)"
             else
                 echo "$1 found in $d"
                 found+=($1)
             fi
+
+            cp $file $dest_dir
             copy_dlls_for_obj $file
 
             return

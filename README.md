@@ -27,10 +27,10 @@ INSTALL_DIR=/PATH/TO/INSTALL/DIR bash -c "$(curl -fsSL https://raw.githubusercon
 Run the command in your MinGW environment:
 
 ```bash
-fetch-dlls [binary_files.exe]
+fetch-dlls [binary_file.exe]
 
-# Also accepts multiple files as input
-fetch-dlls [binary_files.exe,library_files.dll]
+# DLLs and multiple files as input are also accepted
+fetch-dlls [binary_files.exe library_files.dll ...]
 ```
 
 The output will be something like this:
