@@ -14,7 +14,7 @@ You can download `fetch-dlls.sh`, rename it and make it executable (`chmod +x`),
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/arthursn/fetch-dlls/master/install.sh)"
 ```
 
-This will install sync-remote in `$HOME/.local/bin`.
+This will install `fetch-dlls` in `$HOME/.local/bin`.
 
 For installing in a custom dir, just set the `INSTALL_DIR` variable:
 
