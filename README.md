@@ -8,19 +8,21 @@ Based on the following Andrew Ward's blog post: https://blog.rubenwardy.com/2018
 
 ## Installation
 
-You can download `fetch-dlls.sh`, rename it and make it executable (`chmod +x`), or use the install script (`install.sh`):
+The most practical way is to use the install script (`install.sh`):
 
 ```bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/arthursn/fetch-dlls/master/install.sh)"
 ```
 
-This will install `fetch-dlls` in `$HOME/.local/bin`.
+This will install `fetch-dlls` (notice, no extension `.sh`) in `$HOME/.local/bin`.
 
 For installing in a custom dir, just set the `INSTALL_DIR` variable:
 
 ```bash
 INSTALL_DIR=/PATH/TO/INSTALL/DIR bash -c "$(curl -fsSL https://raw.githubusercontent.com/arthursn/fetch-dlls/master/install.sh)"
 ```
+
+Alternatively, you can download `fetch-dlls.sh`, rename it if you wish, and make it an executable (with `chmod +x`).
 
 ## Usage
 
